@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import ReactDOM from "react-dom/client";
+import ReactDOM from "react-dom";
 
 class App extends Component {
     constructor() {
@@ -10,9 +10,9 @@ class App extends Component {
     }
 
     function = () => {
-
-        window.alert("Nini");
-
+        this.setState({ name: "nini" }, () => {
+            window.alert(this.state.name);
+        });
     }
 
     render() {
@@ -24,12 +24,14 @@ class App extends Component {
         };
 
         return (
-            <fragment style={centerStyle}>
+            <Fragment>
+                <div style={centerStyle}>
                 <button type="button" className="btn btn-danger" onClick={this.function}>დააკლიკე</button>
-            </fragment>
+                </div>
+            </Fragment>
         );
     }
 }
 
 var root = document.getElementById("root");
-ReactDOM.createRoot(root).render(<App />);
+ReactDOM.render(<App />, root);
